@@ -17,7 +17,19 @@ const IndexPage = () => {
         <input type="hidden" name="form-name" value="contact" />
         <p>
           <label>
-            Your Name: <input type="text" name="hehe" />
+            Your Name: <input type="text" name="Name" />
+          </label>
+          <label>
+            Organization <input type="text" name="Organization" />
+          </label>
+          <label>
+            Email: <input type="text" name="Email" />
+          </label>
+          <label>
+            Phone Number: <input type="text" name="Phone Number" />
+          </label>
+          <label>
+            Message <input type="text" name="Message" />
           </label>
         </p>
         <p>
