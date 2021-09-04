@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 // styles
-const onSubmit = async (event, setSubmitText) => {
+const onSubmit = async (event) => {
   event.preventDefault();
-  setSubmitText("Submitting ...");
+
   const formElements = [...event.currentTarget.elements];
   const isValid =
     formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
@@ -12,7 +14,7 @@ const onSubmit = async (event, setSubmitText) => {
 
   if (validFormElements.length < 1) {
     // or some other cheeky error message
-    setSubmitText("It looks like you filled out too many fields!");
+    toast.error("Invalid amount of inputs");
   } else {
     const filledOutElements = validFormElements
       .filter((elem) => !!elem.value)
@@ -30,30 +32,30 @@ const onSubmit = async (event, setSubmitText) => {
       body: filledOutElements,
     })
       .then(() => {
-        setSubmitText("Successfully submitted!");
+        toast.success("Successfully sent!");
       })
       .catch((_) => {
-        setSubmitText(
-          "There was an error with your submission, please email me using the address above."
-        );
+        toast.error("Failed to send!");
       });
   }
 };
 // markup
 const IndexPage = () => {
-  const [submitText, setSubmitText] = useState(null);
   function test() {
     alert("clicked");
   }
   return (
     <main>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
+      </div>
       <h1>hello</h1>
       <form
         name="contact"
         method="post"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        onSubmit={(e) => onSubmit(e, setSubmitText)}
+        onSubmit={(e) => onSubmit(e)}
         action="/"
       >
         <input type="hidden" name="bot-field" />
@@ -80,7 +82,6 @@ const IndexPage = () => {
           <button type="submit">Send</button>
         </p>
       </form>
-      {submitText && <main>{submitText}</main>}
     </main>
   );
 };
