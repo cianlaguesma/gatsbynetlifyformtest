@@ -13,6 +13,8 @@ const IndexPage = () => {
         data-netlify="true"
         netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <p>
           <label>
             Your Name: <input type="text" name="hehe" />
