@@ -7,11 +7,16 @@ const IndexPage = () => {
   return (
     <main>
       <h1>hello</h1>
-      <form name="test" method="POST" data-netlify="true">
+      <form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
         <p>
-          <span>
-            Your Name: <input type="text" name="name" />
-          </span>
+          <label>
+            Your Name: <input type="text" name="hehe" />
+          </label>
         </p>
         <p>
           <button type="submit">Send</button>
