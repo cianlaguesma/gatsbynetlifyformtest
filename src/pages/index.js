@@ -4,6 +4,9 @@ import * as React from "react";
 
 // markup
 const IndexPage = () => {
+  function test() {
+    alert("clicked");
+  }
   return (
     <main>
       <h1>hello</h1>
@@ -12,10 +15,12 @@ const IndexPage = () => {
         method="post"
         data-netlify="true"
         netlify-honeypot="bot-field"
+        onSubmit={test}
         action="/"
       >
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
+
         <p>
           <label>
             Your Name: <input type="text" name="Name" />
